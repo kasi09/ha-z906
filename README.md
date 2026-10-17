@@ -36,6 +36,25 @@ Custom Integration für das **Logitech Z906** mit der Firmware [Z906RemoteESP32]
 
 Antwortet der Verstärker nicht (Subwoofer am Netzschalter aus, Kabel ab), sind die Z906-Entitäten *nicht verfügbar*. WLAN-Signal und Brownouts bleiben sichtbar, solange der ESP32 erreichbar ist.
 
+## Symbol
+
+Die Integration bringt ihr Symbol und Logo selbst mit (`custom_components/z906/brand/`, helles und dunkles Design). Aktuelle Home-Assistant-Versionen zeigen es unter *Geräte & Dienste* an, ältere Versionen ein Platzhaltersymbol.
+
+![Symbol und Logo, hell und dunkel](docs/brand.png)
+
+## Dashboard
+
+Zwei fertige Vorlagen in [`lovelace/`](lovelace), nur mit eingebauten Karten:
+
+| Datei | Verwendung |
+|---|---|
+| [`z906-card.yaml`](lovelace/z906-card.yaml) | eine Karte für ein bestehendes Dashboard: *Dashboard bearbeiten → Karte hinzufügen → Manuell* → Inhalt einfügen |
+| [`z906-view.yaml`](lovelace/z906-view.yaml) | eigene Ansicht „Z906“ mit Wiedergabe, Pegeln, Signal und System: *Ansicht hinzufügen → ⋮ → In YAML bearbeiten* → Inhalt einfügen |
+
+Enthalten: Ein/Aus, Lautstärke mit Mute, Eingang und Klangmodus direkt auf der Kachel, Dolby/DTS, Schieberegler für Center, Rear und Subwoofer, Verlauf des Eingangspegels und der Temperatur.
+
+Die Entitäts-IDs in den Vorlagen gelten für Home Assistant mit **Systemsprache Deutsch** (z. B. `sensor.logitech_z906_temperatur`). Bei Englisch heißen sie `…_temperature`, `…_sound_mode`, `…_input_level` und `…_wifi_signal`.
+
 ## Beispiel-Automation
 
 ```yaml

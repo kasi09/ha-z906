@@ -1,0 +1,80 @@
+# Logitech Z906: eine Karte für ein bestehendes Dashboard
+#
+# Dashboard bearbeiten → Karte hinzufügen → Manuell → diesen Inhalt einfügen.
+# Nur eingebaute Karten, keine Zusatzinstallation nötig.
+#
+# Die Entitäts-IDs gelten für Home Assistant mit Systemsprache Deutsch.
+# Bei Englisch: "klangmodus" -> "sound_mode", "temperatur" -> "temperature",
+# "eingangspegel" -> "input_level", "wlan_signal" -> "wifi_signal".
+type: vertical-stack
+cards:
+  - type: heading
+    heading: Logitech Z906
+    icon: mdi:speaker
+    badges:
+      - type: entity
+        entity: sensor.logitech_z906_temperatur
+        show_state: true
+        show_icon: true
+      - type: entity
+        entity: sensor.logitech_z906_wlan_signal
+        show_state: true
+        show_icon: true
+
+  # Ein/Aus, Lautstärke mit Mute, Eingang und Klangmodus
+  - type: tile
+    entity: media_player.logitech_z906
+    name: Z906
+    features_position: bottom
+    features:
+      - type: media-player-volume-slider
+        show_mute_button: true
+      - type: media-player-source
+      - type: media-player-sound-mode
+
+  - type: horizontal-stack
+    cards:
+      - type: tile
+        entity: switch.logitech_z906_dolby_dts_5_1
+        name: Dolby / DTS
+        features_position: bottom
+        features:
+          - type: toggle
+      - type: tile
+        entity: select.logitech_z906_klangmodus
+        name: Klangmodus
+        features_position: bottom
+        features:
+          - type: select-options
+
+  # Pegel wie an der Konsole (0-43)
+  - type: tile
+    entity: number.logitech_z906_center
+    icon: mdi:speaker
+    features_position: bottom
+    features:
+      - type: numeric-input
+        style: slider
+  - type: tile
+    entity: number.logitech_z906_rear
+    icon: mdi:surround-sound
+    features_position: bottom
+    features:
+      - type: numeric-input
+        style: slider
+  - type: tile
+    entity: number.logitech_z906_subwoofer
+    icon: mdi:speaker-wireless
+    features_position: bottom
+    features:
+      - type: numeric-input
+        style: slider
+
+  # Eingangssignal als Verlauf: zeigt, ob gerade Ton anliegt
+  - type: tile
+    entity: sensor.logitech_z906_eingangspegel
+    icon: mdi:waveform
+    features_position: bottom
+    features:
+      - type: trend-graph
+        hours_to_show: 1

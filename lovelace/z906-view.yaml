@@ -1,0 +1,108 @@
+# Logitech Z906: eigene Dashboard-Ansicht im Abschnitts-Layout
+#
+# Dashboard bearbeiten → Ansicht hinzufügen (+) → ⋮ → In YAML bearbeiten →
+# diesen Inhalt einfügen → Speichern.
+#
+# Die Entitäts-IDs gelten für Home Assistant mit Systemsprache Deutsch.
+# Bei Englisch: "klangmodus" -> "sound_mode", "temperatur" -> "temperature",
+# "eingangspegel" -> "input_level", "wlan_signal" -> "wifi_signal".
+title: Z906
+path: z906
+icon: mdi:speaker
+type: sections
+max_columns: 3
+sections:
+  - type: grid
+    cards:
+      - type: heading
+        heading: Wiedergabe
+        icon: mdi:speaker
+        badges:
+          - type: entity
+            entity: sensor.logitech_z906_temperatur
+            show_state: true
+            show_icon: true
+      - type: tile
+        entity: media_player.logitech_z906
+        name: Logitech Z906
+        features_position: bottom
+        grid_options:
+          columns: full
+        features:
+          - type: media-player-volume-slider
+            show_mute_button: true
+          - type: media-player-source
+          - type: media-player-sound-mode
+      - type: tile
+        entity: switch.logitech_z906_dolby_dts_5_1
+        name: Dolby / DTS
+        features_position: bottom
+        features:
+          - type: toggle
+      - type: tile
+        entity: select.logitech_z906_klangmodus
+        name: Klangmodus
+        features_position: bottom
+        features:
+          - type: select-options
+
+  - type: grid
+    cards:
+      - type: heading
+        heading: Pegel
+        icon: mdi:tune-vertical
+      - type: tile
+        entity: number.logitech_z906_center
+        icon: mdi:speaker
+        features_position: bottom
+        grid_options:
+          columns: full
+        features:
+          - type: numeric-input
+            style: slider
+      - type: tile
+        entity: number.logitech_z906_rear
+        icon: mdi:surround-sound
+        features_position: bottom
+        grid_options:
+          columns: full
+        features:
+          - type: numeric-input
+            style: slider
+      - type: tile
+        entity: number.logitech_z906_subwoofer
+        icon: mdi:speaker-wireless
+        features_position: bottom
+        grid_options:
+          columns: full
+        features:
+          - type: numeric-input
+            style: slider
+
+  - type: grid
+    cards:
+      - type: heading
+        heading: Signal und System
+        icon: mdi:chart-line
+      - type: tile
+        entity: sensor.logitech_z906_eingangspegel
+        icon: mdi:waveform
+        features_position: bottom
+        grid_options:
+          columns: full
+        features:
+          - type: trend-graph
+            hours_to_show: 1
+      - type: tile
+        entity: sensor.logitech_z906_temperatur
+        features_position: bottom
+        grid_options:
+          columns: full
+        features:
+          - type: trend-graph
+            hours_to_show: 24
+      - type: tile
+        entity: sensor.logitech_z906_wlan_signal
+      - type: tile
+        entity: sensor.logitech_z906_brownouts
+        icon: mdi:flash-alert
