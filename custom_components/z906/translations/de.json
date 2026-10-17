@@ -1,0 +1,75 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Logitech Z906",
+        "description": "IP-Adresse oder Hostname des Z906RemoteESP32-Boards, z. B. logitech-z906.local.",
+        "data": {
+          "host": "Host"
+        },
+        "data_description": {
+          "host": "Adresse des ESP32 am Subwoofer"
+        }
+      },
+      "zeroconf_confirm": {
+        "title": "Logitech Z906",
+        "description": "Logitech Z906 ({name}, {host}) zu Home Assistant hinzufügen?"
+      }
+    },
+    "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen. Läuft Firmware 2.3.0 oder neuer?"
+    },
+    "abort": {
+      "already_configured": "Dieses Gerät ist bereits eingerichtet.",
+      "cannot_connect": "Verbindung fehlgeschlagen.",
+      "not_supported": "Das Gerät meldet keine MAC-Adresse."
+    }
+  },
+  "entity": {
+    "select": {
+      "effect": {
+        "name": "Klangmodus",
+        "state": {
+          "3d": "3D",
+          "2_1": "2.1",
+          "4_1": "4.1",
+          "off": "Aus"
+        }
+      }
+    },
+    "switch": {
+      "decode": {
+        "name": "Dolby/DTS 5.1"
+      }
+    },
+    "number": {
+      "center_level": {
+        "name": "Center"
+      },
+      "rear_level": {
+        "name": "Rear"
+      },
+      "sub_level": {
+        "name": "Subwoofer"
+      }
+    },
+    "sensor": {
+      "temperature": {
+        "name": "Temperatur"
+      },
+      "input_level": {
+        "name": "Eingangspegel"
+      },
+      "rssi": {
+        "name": "WLAN-Signal"
+      },
+      "brownouts": {
+        "name": "Brownouts"
+      },
+      "uptime": {
+        "name": "Laufzeit"
+      }
+    }
+  }
+}
